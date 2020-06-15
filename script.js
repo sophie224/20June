@@ -80,7 +80,7 @@ let imageArr = [
 
 $(document).ready(function() {
     getPersonInfo(imageArr);
-    const personInfo=localStorage.setItem("imageArr",JSON.stringify(imageArr));
+    // const personInfo=localStorage.setItem("imageArr",JSON.stringify(imageArr));
 });
 
 
@@ -102,9 +102,9 @@ function drawEachPerson(i){
     if(imageArr[i]){
         let eachPerson = `
             <aside class="eachPerson_MU " >
-                <div class="img-hover-zoom clickonthis"   id='${i}'>
+                <div class="img-hover-zoom "   id='${i}'>
                     <a >
-                        <img class="" src="${imageArr[i].src}">
+                        <img  src="${imageArr[i].src}">
                     </a>
                 </div>
                 <div class="person_info" >${imageArr[i].name}</div>
@@ -115,38 +115,38 @@ function drawEachPerson(i){
     }
 }
 
-function drawPersonalPage(currentImg,currentName,currentParagraph){
-    let personalPage = `
-        <aside class="left_side">
-            <img class="" src="${currentImg}">
-        </aside>
-        <aside class="right_side">
-            <div>
-                <h2>${currentName}</h2>
-                <aricle class="description">${currentParagraph}</aricle>
-            </div>
+// function drawPersonalPage(currentImg,currentName,currentParagraph){
+//     let personalPage = `
+//         <aside class="left_side">
+//             <img class="" src="${currentImg}">
+//         </aside>
+//         <aside class="right_side">
+//             <div>
+//                 <h2>${currentName}</h2>
+//                 <aricle class="description">${currentParagraph}</aricle>
+//             </div>
 
-        </aside>
-    `
-    return personalPage;
-}
-$(".clickonthis").click(function() {
-    console.log("shemovida")
-    let thisId=$(this).attr('id');
-    console.log("thisId",thisId)
-    const personInfo=localStorage.setItem("thisId",JSON.stringify(thisId));
-    // let currentId=$(this).attr('id');
+//         </aside>
+//     `
+//     return personalPage;
+// }
+// $(".clickonthis").click(function() {
+//     console.log("shemovida")
+//     let thisId=$(this).attr('id');
+//     console.log("thisId",thisId)
+//     const personInfo=localStorage.setItem("thisId",JSON.stringify(thisId));
+//     // let currentId=$(this).attr('id');
     
-    let mainDiv=document.getElementsByClassName("personal_page");
-    let i,currentImg,currentName,currentParagraph;
-    // for(i=0;i<imageArr.length;i++){
-    //     if(currentId==imageArr[i].id){
-    //         currentImg=imageArr[i].src;
-    //         currentName=imageArr[i].name;
-    //         currentParagraph=imageArr[i].paragraph;
-    //         let personalMU=drawPersonalPage(currentImg,currentName,currentParagraph);
-    //         $(mainDiv).append(personalMU);
-    //     }
+//     let mainDiv=document.getElementsByClassName("personal_page");
+//     let i,currentImg,currentName,currentParagraph;
+//     // for(i=0;i<imageArr.length;i++){
+//     //     if(currentId==imageArr[i].id){
+//     //         currentImg=imageArr[i].src;
+//     //         currentName=imageArr[i].name;
+//     //         currentParagraph=imageArr[i].paragraph;
+//     //         let personalMU=drawPersonalPage(currentImg,currentName,currentParagraph);
+//     //         $(mainDiv).append(personalMU);
+//     //     }
 
-    // }
-});
+//     // }
+// });
