@@ -77,14 +77,23 @@ let imageArr = [
     }
     
 ]
-
+let hortName;
 $(document).ready(function() {
     getPersonInfo(imageArr);
-    // const personInfo=localStorage.setItem("imageArr",JSON.stringify(imageArr));
+    let url = window.location.href;
+    console.log("url",url)
+    hortName=RemoveLastDirectoryPartOf(url);
+    localStorage.setItem("hostName",JSON.stringify(hortName));
+    
 });
 
-
-
+function RemoveLastDirectoryPartOf(the_url)
+{
+    var the_arr = the_url.split('/');
+    the_arr.pop();
+    console.log("the_arr.join('/') ",the_arr.join('/') )
+    return( the_arr.join('/') );
+}
 
 function getPersonInfo(imageArr){
     let mainDiv=document.getElementsByClassName("main_page");
@@ -97,56 +106,65 @@ function getPersonInfo(imageArr){
 
 }
 
-
 function drawEachPerson(i){
     if(imageArr[i]){
         let eachPerson = `
             <aside class="eachPerson_MU " >
-                <div class="img-hover-zoom "   id='${i}'>
+                <div class="img-hover-zoom click_new_page"   id='${i}'>
                     <a >
                         <img  src="${imageArr[i].src}">
                     </a>
                 </div>
                 <div class="person_info" >${imageArr[i].name}</div>
-                <button class="person_button " >${imageArr[i].justName}ს ისტორია</button>
+                <button class="person_button click_new_page" id='${i}' >${imageArr[i].justName}ს ისტორია</button>
             </aside>
         `
         return eachPerson;
     }
 }
 
-// function drawPersonalPage(currentImg,currentName,currentParagraph){
-//     let personalPage = `
-//         <aside class="left_side">
-//             <img class="" src="${currentImg}">
-//         </aside>
-//         <aside class="right_side">
-//             <div>
-//                 <h2>${currentName}</h2>
-//                 <aricle class="description">${currentParagraph}</aricle>
-//             </div>
+function drawPersonalPage(currentImg,currentName,currentParagraph){
+    let personalPage = `
+        <aside class="left_side">
+            <img class="" src="${currentImg}">
+        </aside>
+        <aside class="right_side">
+            <div>
+                <h2>${currentName}</h2>
+                <aricle class="description">${currentParagraph}</aricle>
+            </div>
 
-//         </aside>
-//     `
-//     return personalPage;
-// }
-// $(".clickonthis").click(function() {
-//     console.log("shemovida")
-//     let thisId=$(this).attr('id');
-//     console.log("thisId",thisId)
-//     const personInfo=localStorage.setItem("thisId",JSON.stringify(thisId));
-//     // let currentId=$(this).attr('id');
+        </aside>
+    `
+    return personalPage;
+}
+
+function myFunction() {
+    let hostNameFromLS=localStorage.getItem("hostName")+"/personPage.html";
     
-//     let mainDiv=document.getElementsByClassName("personal_page");
-//     let i,currentImg,currentName,currentParagraph;
-//     // for(i=0;i<imageArr.length;i++){
-//     //     if(currentId==imageArr[i].id){
-//     //         currentImg=imageArr[i].src;
-//     //         currentName=imageArr[i].name;
-//     //         currentParagraph=imageArr[i].paragraph;
-//     //         let personalMU=drawPersonalPage(currentImg,currentName,currentParagraph);
-//     //         $(mainDiv).append(personalMU);
-//     //     }
+    window.open(hostNameFromLS);
+  }
+$(".main_page").on('click', '.click_new_page', function() {
+    console.log("onclick");
+    myFunction();
+    let hostNameFromLS=localStorage.getItem("hostName")+"/personPage";
+    let currentId=$(this).attr('id');
+    const personInfo=localStorage.setItem("currentId",JSON.stringify(currentId));
+    let mainDiv=document.getElementsByClassName("personal_page");
+    let i,currentImg,currentName,currentParagraph,personalMU;
+    console.log("imageArr",imageArr)
+    console.log("currentId",currentId)
+    for(i=0;i<imageArr.length;i++){
+       
+        if(currentId==imageArr[i].id){
 
-//     // }
-// });
+            currentImg=imageArr[i].src;
+            currentName=imageArr[i].name;
+            currentParagraph=imageArr[i].paragraph;
+            personalMU=drawPersonalPage(currentImg,currentName,currentParagraph);
+            $(mainDiv).append(personalMU);
+
+        }
+
+    }
+});
