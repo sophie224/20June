@@ -1,7 +1,7 @@
 let imageArr = [
     {
         id: 0,
-        src:`./assets/giorgi2.png`,
+        src:`./assets/2.jpg`,
         justName:`გიო`,
         name:`გიო სულაშვილი, 30 `,
         paragraph:`თვალის დაკარგვიდან ერთი წლის შემდეგ გიორგი ამბობს, რომ მისთვის ყველაზე რთული ამ დროის განმავლობაში ის დღეები იყო 
@@ -18,7 +18,7 @@ let imageArr = [
     },
     {
         id: 1,
-        src: `./assets/mako2.png`,
+        src: `./assets/4.jpg`,
         name:`მაკო გომური, 19 `,
         justName:`მაკო`,
         paragraph: `2019 წლის სექტემბერში მაკო გომურმა ყოფილ შინაგან საქმეთა მინისტრს და მოქმედ პრემიერ-მინისტრს, 
@@ -33,7 +33,7 @@ let imageArr = [
     },
     {
         id: 2,
-        src: `./assets/104547018_2460639237561065_754463767204614346_n.jpg`,
+        src: `./assets/3.jpg`,
         name:`კობა ლეთოდიანი, 51 `,
         justName:`კობა`,
         paragraph: `კობა ლეთოდიანმა პირველი თვალი აფხაზეთის ომში დაკარგა, მეორე, საღად გადარჩენილ თვალში 20 ივნისის რეზინის 
@@ -47,7 +47,7 @@ let imageArr = [
     },
     {
         id: 3,
-        src: `./assets/Master.00_06_28_18.Still002.jpg`,
+        src: `./assets/5.jpg`,
         name:`დავით ფარადაშვილი, 32 `,
         justName:`დავითი`,
         paragraph: `დავით ფარადაშვილი 20 ივნისს სახლიდან გავიდა, აქციაზე წავიდა და იმის შემდეგ თითქმის მთელი წელი სხვადასხვა 
@@ -66,7 +66,7 @@ let imageArr = [
     },
     {
         id: 4,
-        src: `./assets/Master.00_00_50_21.Still002.jpg`,
+        src: `./assets/1.jpg`,
         name:`დავით ქურდოვანიძე, 21 `,
         justName:`დავითი`,
         paragraph: `დავითი აქციაზე რამდენჯერმე მივიდა და ტყვია თვალში გამთენიისას, დილის 4 საათისთვის მოხვდა ოპერის სიახლოვეს. 
@@ -80,20 +80,21 @@ let imageArr = [
 let hortName;
 $(document).ready(function() {
     getPersonInfo(imageArr);
-    let url = window.location.href;
-    console.log("url",url)
-    hortName=RemoveLastDirectoryPartOf(url);
-    localStorage.setItem("hostName",JSON.stringify(hortName));
+   
+    // let url = window.location.href;
+    // console.log("url",url)
+    // hortName=RemoveLastDirectoryPartOf(url);
+    // localStorage.setItem("hostName",JSON.stringify(hortName));
     
 });
 
-function RemoveLastDirectoryPartOf(the_url)
-{
-    var the_arr = the_url.split('/');
-    the_arr.pop();
-    console.log("the_arr.join('/') ",the_arr.join('/') )
-    return( the_arr.join('/') );
-}
+// function RemoveLastDirectoryPartOf(the_url)
+// {
+//     var the_arr = the_url.split('/');
+//     the_arr.pop();
+//     console.log("the_arr.join('/') ",the_arr.join('/') )
+//     return( the_arr.join('/') );
+// }
 
 function getPersonInfo(imageArr){
     let mainDiv=document.getElementsByClassName("main_page");
@@ -110,8 +111,8 @@ function drawEachPerson(i){
     if(imageArr[i]){
         let eachPerson = `
             <aside class="eachPerson_MU " >
-                <div class="img-hover-zoom click_new_page"   id='${i}'>
-                    <a >
+                <div class="img-hover-zoom"   >
+                    <a  class="click_new_page" id='${i}'>
                         <img  src="${imageArr[i].src}">
                     </a>
                 </div>
@@ -139,32 +140,46 @@ function drawPersonalPage(currentImg,currentName,currentParagraph){
     return personalPage;
 }
 
-function myFunction() {
-    let hostNameFromLS=localStorage.getItem("hostName")+"/personPage.html";
-    
-    window.open(hostNameFromLS);
-  }
-$(".main_page").on('click', '.click_new_page', function() {
-    console.log("onclick");
-    myFunction();
-    let hostNameFromLS=localStorage.getItem("hostName")+"/personPage";
-    let currentId=$(this).attr('id');
-    const personInfo=localStorage.setItem("currentId",JSON.stringify(currentId));
-    let mainDiv=document.getElementsByClassName("personal_page");
-    let i,currentImg,currentName,currentParagraph,personalMU;
-    console.log("imageArr",imageArr)
-    console.log("currentId",currentId)
-    for(i=0;i<imageArr.length;i++){
-       
-        if(currentId==imageArr[i].id){
+function RemoveLastDirectoryPartOf(){
+    var url= window.location.href; 
+    var the_arr = url.split('/');
+    the_arr.pop();
+    let newLocation = the_arr.join('/') + '/personPage.html';
+    return(newLocation);
+}
 
+$(".main_page").on('click', '.click_new_page', function(mainDiv) {
+    let openNewPage=RemoveLastDirectoryPartOf();
+    window.open(`${openNewPage}`, '_blank');
+    let currentId=$(this).attr('id');
+    const setCurrentId=localStorage.setItem("currentId",currentId);
+    const getCurrentId=parseInt(localStorage.getItem("currentId"));
+    
+    let mainDiv1=document.getElementById("personal_page");
+    let i,currentImg,currentName,currentParagraph,personalMU;
+    for(i=0;i<imageArr.length;i++){
+        if(getCurrentId==imageArr[i].id){
             currentImg=imageArr[i].src;
             currentName=imageArr[i].name;
             currentParagraph=imageArr[i].paragraph;
             personalMU=drawPersonalPage(currentImg,currentName,currentParagraph);
-            $(mainDiv).append(personalMU);
-
+            $(mainDiv1).append(personalMU);
         }
-
     }
 });
+
+function drawPersonalPage(currentImg,currentName,currentParagraph){
+    let personalPage = `
+        <aside class="left_side">
+            <img class="" src="${currentImg}">
+        </aside>
+        <aside class="right_side">
+            <div>
+                <h2>${currentName}</h2>
+                <aricle class="description">${currentParagraph}</aricle>
+            </div>
+
+        </aside>
+    `
+    return personalPage;
+}
