@@ -170,6 +170,15 @@ function drawPersonalPage(currentImg,currentName,currentParagraph){
         </aside>
         <aside class="right_side">
             <div>
+                <div  class="buttons"> 
+                    <a  class="btn btn-1" href="index.html">
+                        <svg>
+                            <rect x="0" y="0" fill="none" width="100%" height="100%"/>
+                        </svg>
+                        <span>&#10229;</span>
+                        5 ამბავი
+                    </a>
+                </div>
                 <h2>${currentName}</h2>
                 <aricle class="description">${currentParagraph}</aricle>
             </div>
