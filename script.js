@@ -5,6 +5,7 @@ let imageArr = [
         justName:`გიო`,
         name:`გიო სულაშვილი `,
         age:`30 წლის`,
+        videoSrc:`https://www.youtube.com/embed/tgbNymZ7vqY?controls=0`,
         paragraph:`თვალის დაკარგვიდან ერთი წლის შემდეგ გიორგი ამბობს, რომ მისთვის ყველაზე რთული ამ დროის განმავლობაში ის დღეები იყო 
             როცა შვილის საქართველოში მარტო დატოვება და სამკურნალოდ გერმანიაში წასვლა ჭირდებოდა. 
             უკან დაბრუნებულს ბავშვი კარს უკეტავდა და არსად უშვებდა იმის შიშით, 
@@ -23,6 +24,7 @@ let imageArr = [
         name:`მაკო გომური `,
         age:`19 წლის`,
         justName:`მაკო`,
+        videoSrc:``,
         paragraph: `2019 წლის სექტემბერში მაკო გომურმა ყოფილ შინაგან საქმეთა მინისტრს და მოქმედ პრემიერ-მინისტრს, 
         გიორგი გახარიას წერილი მიწერა, სადაც კითხულობდა, რატომ იყო თავისუფალი ადამიანი, 
         რომელმაც თვალი გამოთხარა და ზაფხული ჯოჯოხეთად უქცია და რანაირად შეძლებდა მთავრობის მეთაური ქვეყნის მართვას, 
@@ -39,6 +41,7 @@ let imageArr = [
         name:`კობა ლეთოდიანი`,
         age:`51 წლის`,
         justName:`კობა`,
+        videoSrc:``,
         paragraph: `კობა ლეთოდიანმა პირველი თვალი აფხაზეთის ომში დაკარგა, მეორე, საღად გადარჩენილ თვალში 20 ივნისის რეზინის 
         4 ტყვია მოხვდა და მდგომარეობა იმდენად რთული იყო, რომ თითქმის ერთი თვე ტყვიებთან ერთად იცხოვრა. 
         ექიმები თვალის სრულად დაშლის შიშით სხეულიდან ტყვიებს ვერ იღებდნენ. 
@@ -54,6 +57,7 @@ let imageArr = [
         name:`დავით ფარადაშვილი `,
         age:`32 წლის`,
         justName:`დავითი`,
+        videoSrc:``,
         paragraph: `დავით ფარადაშვილი 20 ივნისს სახლიდან გავიდა, აქციაზე წავიდა და იმის შემდეგ თითქმის მთელი წელი სხვადასხვა 
         კლინიკაში მოუწია ცხოვრებამ - სახლში 2020 წლის გაზაფხულზე დაბრუნდა, როცა პანდემიის პირობებში კლინიკებმა საწოლების 
         გათავისუფლება დაიწყეს. თავში მოხვედრილმა ცრემლსადენი აირის ყუმბარამ თავის ქალა დაუზიანა, ტრავმის შედეგად პარალიზებული 
@@ -74,6 +78,7 @@ let imageArr = [
         name:`დავით ქურდოვანიძე`,
         age:`21 წლის`,
         justName:`დავითი`,
+        videoSrc:``,
         paragraph: `დავითი აქციაზე რამდენჯერმე მივიდა და ტყვია თვალში გამთენიისას, დილის 4 საათისთვის მოხვდა ოპერის სიახლოვეს. 
         როგორც თვითონ ჰყვება, სხვებს გამოსვლაში ეხმარებოდა, გარშემო ცრემლსადენი აირისგან დატრიალებული კვამლი იყო. 
         თავიდან არსებობდა მხედველობის შენარჩუნების იმედი - 5 ოპერაციის შემდეგ, როცა თვალი ძვლის ნამსხვრევებისგან უკვე გაწმენდილია
@@ -85,26 +90,13 @@ let imageArr = [
 let hortName;
 $(document).ready(function() {
     getPersonInfo(imageArr);
-   
-    // let url = window.location.href;
-    // console.log("url",url)
-    // hortName=RemoveLastDirectoryPartOf(url);
-    // localStorage.setItem("hostName",JSON.stringify(hortName));
-    
 });
 
-// function RemoveLastDirectoryPartOf(the_url)
-// {
-//     var the_arr = the_url.split('/');
-//     the_arr.pop();
-//     console.log("the_arr.join('/') ",the_arr.join('/') )
-//     return( the_arr.join('/') );
-// }
+
 
 function getPersonInfo(imageArr){
     let mainDiv=document.getElementsByClassName("main_page");
     let eachMU;
-
     for(let i=0;i<imageArr.length;i++){
         let eachMU=drawEachPerson(i);
         $(mainDiv).append(eachMU);
@@ -156,14 +148,12 @@ function RemoveLastDirectoryPartOf(){
 
 $(".main_page").on('click', '.click_new_page', function(mainDiv) {
     let openNewPage=RemoveLastDirectoryPartOf();
-    // window.location.replace(`${openNewPage}`);
-    // window.open('page.html', '_self');
     window.open(`${openNewPage}`, '_self');
     let currentId=$(this).attr('id');
     const setCurrentId=localStorage.setItem("currentId",currentId);
 });
 
-function drawPersonalPage(currentImg,currentName,currentParagraph){
+function drawPersonalPage(i,currentImg,currentName,currentParagraph,currentAge){
     let personalPage = `
         <aside class="left_side">
             <img class="" src="${currentImg}">
@@ -179,7 +169,8 @@ function drawPersonalPage(currentImg,currentName,currentParagraph){
                         5 ამბავი
                     </a>
                 </div>
-                <h2>${currentName}</h2>
+                <h2>${currentName}, ${currentAge}  <i class="fa fa-video-camera" id="myBtn" data-id="${i}" aria-hidden="true"></i></h2>
+                
                 <aricle class="description">${currentParagraph}</aricle>
             </div>
 
@@ -198,11 +189,52 @@ $(document).ready(function () {
         for(i = 0; i < imageArr.length; i++){
             if(getCurrentId==imageArr[i].id){
                 currentImg=imageArr[i].src;
+                currentAge=imageArr[i].age;
                 currentName=imageArr[i].name;
                 currentParagraph=imageArr[i].paragraph;
-                personalMU=drawPersonalPage(currentImg,currentName,currentParagraph);
+                personalMU=drawPersonalPage(i,currentImg,currentName,currentParagraph,currentAge);
                 $(mainDiv1).append(personalMU);
             }
         }
     }
+    modalBoxFunc();
 });
+
+function modalBoxFunc(){
+    let currentDataId=parseInt($("#myBtn").attr("data-id"));
+    console.log("currentDataId",currentDataId)
+    let modal = document.getElementById("myModal");
+    let btn = document.getElementById("myBtn");
+    let span = document.getElementsByClassName("close")[0];
+    btn.onclick = function() {
+        modal.style.display = "block";
+        for(i = 0; i < imageArr.length; i++){
+            console.log("imageArr[i].id",imageArr[i].id);
+            console.log("currentDataId",currentDataId);
+            if(currentDataId==imageArr[i].id){
+                $(".iframe").attr("src",`${imageArr[i].videoSrc}`);
+            }
+        }
+    }
+    span.onclick = function() {
+        modal.style.display = "none";
+       
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+// Get the modal
+
+
+// $(".fa-video-camera").click(function() {
+
+// });
+
+
+
+
+
+
