@@ -1,7 +1,7 @@
 let imageArr = [
     {
         id: 0,
-        src:`./assets/2.jpg`,
+        src:`./assets/2.png`,
         justName:`გიო`,
         name:`გიო სულაშვილი, 30 `,
         paragraph:`თვალის დაკარგვიდან ერთი წლის შემდეგ გიორგი ამბობს, რომ მისთვის ყველაზე რთული ამ დროის განმავლობაში ის დღეები იყო 
@@ -18,7 +18,7 @@ let imageArr = [
     },
     {
         id: 1,
-        src: `./assets/4.jpg`,
+        src: `./assets/4.png`,
         name:`მაკო გომური, 19 `,
         justName:`მაკო`,
         paragraph: `2019 წლის სექტემბერში მაკო გომურმა ყოფილ შინაგან საქმეთა მინისტრს და მოქმედ პრემიერ-მინისტრს, 
@@ -33,7 +33,7 @@ let imageArr = [
     },
     {
         id: 2,
-        src: `./assets/3.jpg`,
+        src: `./assets/3.png`,
         name:`კობა ლეთოდიანი, 51 `,
         justName:`კობა`,
         paragraph: `კობა ლეთოდიანმა პირველი თვალი აფხაზეთის ომში დაკარგა, მეორე, საღად გადარჩენილ თვალში 20 ივნისის რეზინის 
@@ -47,7 +47,7 @@ let imageArr = [
     },
     {
         id: 3,
-        src: `./assets/5.jpg`,
+        src: `./assets/5.png`,
         name:`დავით ფარადაშვილი, 32 `,
         justName:`დავითი`,
         paragraph: `დავით ფარადაშვილი 20 ივნისს სახლიდან გავიდა, აქციაზე წავიდა და იმის შემდეგ თითქმის მთელი წელი სხვადასხვა 
@@ -66,7 +66,7 @@ let imageArr = [
     },
     {
         id: 4,
-        src: `./assets/1.jpg`,
+        src: `./assets/1.png`,
         name:`დავით ქურდოვანიძე, 21 `,
         justName:`დავითი`,
         paragraph: `დავითი აქციაზე რამდენჯერმე მივიდა და ტყვია თვალში გამთენიისას, დილის 4 საათისთვის მოხვდა ოპერის სიახლოვეს. 
@@ -153,19 +153,6 @@ $(".main_page").on('click', '.click_new_page', function(mainDiv) {
     window.open(`${openNewPage}`, '_blank');
     let currentId=$(this).attr('id');
     const setCurrentId=localStorage.setItem("currentId",currentId);
-    const getCurrentId=parseInt(localStorage.getItem("currentId"));
-    
-    let mainDiv1=document.getElementById("personal_page");
-    let i,currentImg,currentName,currentParagraph,personalMU;
-    for(i=0;i<imageArr.length;i++){
-        if(getCurrentId==imageArr[i].id){
-            currentImg=imageArr[i].src;
-            currentName=imageArr[i].name;
-            currentParagraph=imageArr[i].paragraph;
-            personalMU=drawPersonalPage(currentImg,currentName,currentParagraph);
-            $(mainDiv1).append(personalMU);
-        }
-    }
 });
 
 function drawPersonalPage(currentImg,currentName,currentParagraph){
@@ -183,3 +170,22 @@ function drawPersonalPage(currentImg,currentName,currentParagraph){
     `
     return personalPage;
 }
+
+$(document).ready(function () {
+    let url = window.location.href;
+    url = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
+    if(url === "personPage"){
+        const getCurrentId=parseInt(localStorage.getItem("currentId"));
+        let mainDiv1=document.getElementById("personal_page");
+        let i,currentImg,currentName,currentParagraph,personalMU;
+        for(i = 0; i < imageArr.length; i++){
+            if(getCurrentId==imageArr[i].id){
+                currentImg=imageArr[i].src;
+                currentName=imageArr[i].name;
+                currentParagraph=imageArr[i].paragraph;
+                personalMU=drawPersonalPage(currentImg,currentName,currentParagraph);
+                $(mainDiv1).append(personalMU);
+            }
+        }
+    }
+});
