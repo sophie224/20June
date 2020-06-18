@@ -4,7 +4,7 @@ body{
     padding: 0;
 }
 header{
-    position: fixed;
+    position: sticky;
     top: 0;
     z-index: 5;
 }
@@ -147,8 +147,33 @@ header div img{
     transform: scale(1.2);
 }
 
-
 /*img hover end*/
+
+
+
+.author_container{
+    width: 51%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.published_container:before{
+    border-top: 2px solid #e77454;
+    content: "";
+    display: block;
+    margin: 1rem auto;
+    width: 6rem;
+}
+.published_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 80px;
+}
+
 
 
   /*responsive*/
@@ -194,4 +219,32 @@ header div img{
     .indrodution article{
         font-size: 3vw;
     }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  /*personal-page*/
+
+  #personal_page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 183px auto;
+  }
+  .left_side, .right_side{
+    width: 50%;
+  }
+  .left_side img{
+      width: 100%;
+      height: 100%;
   }

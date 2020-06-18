@@ -3,7 +3,8 @@ let imageArr = [
         id: 0,
         src:`./assets/2.png`,
         justName:`გიო`,
-        name:`გიო სულაშვილი, 30 `,
+        name:`გიო სულაშვილი `,
+        age:`30 წლის`,
         paragraph:`თვალის დაკარგვიდან ერთი წლის შემდეგ გიორგი ამბობს, რომ მისთვის ყველაზე რთული ამ დროის განმავლობაში ის დღეები იყო 
             როცა შვილის საქართველოში მარტო დატოვება და სამკურნალოდ გერმანიაში წასვლა ჭირდებოდა. 
             უკან დაბრუნებულს ბავშვი კარს უკეტავდა და არსად უშვებდა იმის შიშით, 
@@ -19,7 +20,8 @@ let imageArr = [
     {
         id: 1,
         src: `./assets/4.png`,
-        name:`მაკო გომური, 19 `,
+        name:`მაკო გომური `,
+        age:`19 წლის`,
         justName:`მაკო`,
         paragraph: `2019 წლის სექტემბერში მაკო გომურმა ყოფილ შინაგან საქმეთა მინისტრს და მოქმედ პრემიერ-მინისტრს, 
         გიორგი გახარიას წერილი მიწერა, სადაც კითხულობდა, რატომ იყო თავისუფალი ადამიანი, 
@@ -34,7 +36,8 @@ let imageArr = [
     {
         id: 2,
         src: `./assets/3.png`,
-        name:`კობა ლეთოდიანი, 51 `,
+        name:`კობა ლეთოდიანი`,
+        age:`51 წლის`,
         justName:`კობა`,
         paragraph: `კობა ლეთოდიანმა პირველი თვალი აფხაზეთის ომში დაკარგა, მეორე, საღად გადარჩენილ თვალში 20 ივნისის რეზინის 
         4 ტყვია მოხვდა და მდგომარეობა იმდენად რთული იყო, რომ თითქმის ერთი თვე ტყვიებთან ერთად იცხოვრა. 
@@ -48,7 +51,8 @@ let imageArr = [
     {
         id: 3,
         src: `./assets/5.png`,
-        name:`დავით ფარადაშვილი, 32 `,
+        name:`დავით ფარადაშვილი `,
+        age:`32 წლის`,
         justName:`დავითი`,
         paragraph: `დავით ფარადაშვილი 20 ივნისს სახლიდან გავიდა, აქციაზე წავიდა და იმის შემდეგ თითქმის მთელი წელი სხვადასხვა 
         კლინიკაში მოუწია ცხოვრებამ - სახლში 2020 წლის გაზაფხულზე დაბრუნდა, როცა პანდემიის პირობებში კლინიკებმა საწოლების 
@@ -67,7 +71,8 @@ let imageArr = [
     {
         id: 4,
         src: `./assets/1.png`,
-        name:`დავით ქურდოვანიძე, 21 `,
+        name:`დავით ქურდოვანიძე`,
+        age:`21 წლის`,
         justName:`დავითი`,
         paragraph: `დავითი აქციაზე რამდენჯერმე მივიდა და ტყვია თვალში გამთენიისას, დილის 4 საათისთვის მოხვდა ოპერის სიახლოვეს. 
         როგორც თვითონ ჰყვება, სხვებს გამოსვლაში ეხმარებოდა, გარშემო ცრემლსადენი აირისგან დატრიალებული კვამლი იყო. 
@@ -117,6 +122,7 @@ function drawEachPerson(i){
                     </a>
                 </div>
                 <div class="person_info" >${imageArr[i].name}</div>
+                <div class="person_info" >${imageArr[i].age}</div>
                 <button class="person_button click_new_page" id='${i}' >${imageArr[i].justName}ს ისტორია</button>
             </aside>
         `
@@ -150,7 +156,9 @@ function RemoveLastDirectoryPartOf(){
 
 $(".main_page").on('click', '.click_new_page', function(mainDiv) {
     let openNewPage=RemoveLastDirectoryPartOf();
-    window.open(`${openNewPage}`, '_blank');
+    // window.location.replace(`${openNewPage}`);
+    // window.open('page.html', '_self');
+    window.open(`${openNewPage}`, '_self');
     let currentId=$(this).attr('id');
     const setCurrentId=localStorage.setItem("currentId",currentId);
 });
