@@ -8,7 +8,7 @@
 }
 
 @font-face {
-  font-family: 'DejaVuSans';
+  font-family: 'DejaVuSans Bold';
   src: url('./assets/fonts/DejaVuSans-Bold.woff2') format('woff2'),
       url('DejaVuSans-Bold.woff') format('woff');
   font-weight: bold;
@@ -50,6 +50,9 @@ header, footer{
     height: 60px;
     background-color:#e2e2e2;
 }
+footer span{
+  font-family: 'DejaVuSans Bold',sans-serif;
+}
 header div {
     width: 3%;
 }
@@ -81,7 +84,6 @@ header div img{
 }
 .indrodution article{
     font-size: 1vw;
-    text-align: justify;
 }
 .eachPerson_MU{
     width: 20%;
@@ -249,7 +251,7 @@ header div img{
   width: 100%;
 }
 .fa-video-camera:before {
-  font-size: 30px;
+  font-size: 35px;
 }
 .fa-video-camera{
   margin-bottom: 10px;
@@ -308,16 +310,10 @@ header div img{
 
 /*responsive*/
 
-
-
-
 .iframe{
   width: 700px;
   height: 380px;
 }
-
-
-
 
   /*modal*/
 
@@ -485,6 +481,9 @@ header div img{
   }
   .person_age{
     font-size: 3vw;
+  }
+  .author_container{
+    width: 70%;
   }
 }
 
