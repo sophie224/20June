@@ -24,7 +24,7 @@ let imageArr = [
         name:`მაკო გომური `,
         age:`19 წლის`,
         justName:`მაკო`,
-        videoSrc:``,
+        videoSrc:`https://www.youtube.com/embed/wzQDgvDR5Js`,
         paragraph: `2019 წლის სექტემბერში მაკო გომურმა ყოფილ შინაგან საქმეთა მინისტრს და მოქმედ პრემიერ-მინისტრს, 
         გიორგი გახარიას წერილი მიწერა, სადაც კითხულობდა, რატომ იყო თავისუფალი ადამიანი, 
         რომელმაც თვალი გამოთხარა და ზაფხული ჯოჯოხეთად უქცია და რანაირად შეძლებდა მთავრობის მეთაური ქვეყნის მართვას, 
@@ -57,7 +57,7 @@ let imageArr = [
         name:`დავით ფარადაშვილი `,
         age:`32 წლის`,
         justName:`დავითი`,
-        videoSrc:``,
+        videoSrc:`https://www.youtube.com/embed/_0xYJ1y4xQE`,
         paragraph: `დავით ფარადაშვილი 20 ივნისს სახლიდან გავიდა, აქციაზე წავიდა და იმის შემდეგ თითქმის მთელი წელი სხვადასხვა 
         კლინიკაში მოუწია ცხოვრებამ - სახლში 2020 წლის გაზაფხულზე დაბრუნდა, როცა პანდემიის პირობებში კლინიკებმა საწოლების 
         გათავისუფლება დაიწყეს. თავში მოხვედრილმა ცრემლსადენი აირის ყუმბარამ თავის ქალა დაუზიანა, ტრავმის შედეგად პარალიზებული 
@@ -114,7 +114,7 @@ function drawEachPerson(i){
                     </a>
                 </div>
                 <div class="person_info" >${imageArr[i].name}</div>
-                <div class="person_info" >${imageArr[i].age}</div>
+                <div class="person_age" >${imageArr[i].age}</div>
                 <button class="person_button click_new_page" id='${i}' >${imageArr[i].justName}ს ისტორია</button>
             </aside>
         `
@@ -159,7 +159,7 @@ function drawPersonalPage(i,currentImg,currentName,currentParagraph,currentAge){
             <img class="" src="${currentImg}">
         </aside>
         <aside class="right_side">
-            <div>
+            <div class="common-div">
                 <div  class="buttons"> 
                     <a  class="btn btn-1" href="index.html">
                         <svg>
@@ -169,7 +169,8 @@ function drawPersonalPage(i,currentImg,currentName,currentParagraph,currentAge){
                         5 ამბავი
                     </a>
                 </div>
-                <h2>${currentName}, ${currentAge}  <i class="fa fa-video-camera" id="myBtn" data-id="${i}" aria-hidden="true"></i></h2>
+                <h2>${currentName}, ${currentAge}  </h2>
+                <i class="fa fa-video-camera" id="myBtn" data-id="${i}" aria-hidden="true"></i>
                 
                 <aricle class="description">${currentParagraph}</aricle>
             </div>
@@ -180,6 +181,7 @@ function drawPersonalPage(i,currentImg,currentName,currentParagraph,currentAge){
 }
 
 $(document).ready(function () {
+    let iframeClass=document.querySelector(".iframe");
     let url = window.location.href;
     url = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
     if(url === "personPage"){
@@ -197,10 +199,10 @@ $(document).ready(function () {
             }
         }
     }
-    modalBoxFunc();
+    modalBoxFunc(iframeClass);
 });
 
-function modalBoxFunc(){
+function modalBoxFunc(iframeClass){
     let currentDataId=parseInt($("#myBtn").attr("data-id"));
     console.log("currentDataId",currentDataId)
     let modal = document.getElementById("myModal");
@@ -208,11 +210,10 @@ function modalBoxFunc(){
     let span = document.getElementsByClassName("close")[0];
     btn.onclick = function() {
         modal.style.display = "block";
+       
         for(i = 0; i < imageArr.length; i++){
-            console.log("imageArr[i].id",imageArr[i].id);
-            console.log("currentDataId",currentDataId);
             if(currentDataId==imageArr[i].id){
-                $(".iframe").attr("src",`${imageArr[i].videoSrc}`);
+                $(iframeClass).attr("src",`${imageArr[i].videoSrc}`);
             }
         }
     }
