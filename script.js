@@ -198,6 +198,7 @@ function drawPersonalPage(i,currentImg,currentName,currentParagraph,currentAge){
 // 
 
 $(document).ready(function () {
+    
     let iframeClass=document.querySelector(".iframe");
     let url = window.location.href;
    
@@ -225,7 +226,7 @@ $(document).ready(function () {
         }
     }
     modalBoxFunc(iframeClass);
-   
+    
 });
 function showMoreLess(){
     
