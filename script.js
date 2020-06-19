@@ -1,7 +1,7 @@
 let imageArr = [
     {
         id: 0,
-        src:`./assets/2.png`,
+        src:`https://gdb.rferl.org/f3d3d8da-dda8-4296-b388-45d416f58f98.png?fbclid=IwAR39lMumh1hBWkh14kV_krQk2n8kP5DDlanArBiaCXNDogRz8GHBC52BV1E`,
         justName:`გიო`,
         name:`გიო სულაშვილი `,
         age:`30 წლის`,
@@ -20,7 +20,7 @@ let imageArr = [
     },
     {
         id: 1,
-        src: `./assets/4.png`,
+        src: `https://gdb.rferl.org/5ae0f04c-4f8b-4065-b18c-35f343cc905e.png?fbclid=IwAR2-PYEEg3LwPGSs_uThOzqRP1k9ERuGxKxRKluTIpv26xIIJb_NNJV1tGw`,
         name:`მაკო გომური `,
         age:`19 წლის`,
         justName:`მაკო`,
@@ -37,7 +37,7 @@ let imageArr = [
     },
     {
         id: 2,
-        src: `./assets/3.png`,
+        src: `https://gdb.rferl.org/8b657811-891d-4ec9-ad75-b0ada32693e7.png?fbclid=IwAR1QdxEkIMTCg1Zh4a3yvCYTK_aJ_gnNHCA97a2WEUG7V713Pflp4oUpFSU`,
         name:`კობა ლეთოდიანი`,
         age:`51 წლის`,
         justName:`კობა`,
@@ -53,7 +53,7 @@ let imageArr = [
     },
     {
         id: 3,
-        src: `./assets/5.png`,
+        src: `https://gdb.rferl.org/ba0d428f-12bd-4a0c-96b6-8e909228631c.png?fbclid=IwAR3Il5BpjF_k3KgA0O_pALG1VHLcr5-NfeaNGEm8x9P85LJZLOteaCeI160`,
         name:`დავით ფარადაშვილი `,
         age:`32 წლის`,
         justName:`დავითი`,
@@ -74,7 +74,7 @@ let imageArr = [
     },
     {
         id: 4,
-        src: `./assets/1.png`,
+        src: `https://gdb.rferl.org/79354151-5f9b-452a-a6c1-22c13a2515ea.png?fbclid=IwAR0oRM4M-XDC99Kx0qBx4GV5bbSfKx-Sa4XkxbIiA87exxgJ6itQYox9dI0`,
         name:`დავით ქურდოვანიძე`,
         age:`21 წლის`,
         justName:`დავითი`,
