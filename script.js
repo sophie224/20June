@@ -121,22 +121,6 @@ function drawEachPerson(i){
     }
 }
 
-// function drawPersonalPage(currentImg,currentName,currentParagraph){
-//     let personalPage = `
-//         <aside class="left_side">
-//             <img class="" src="${currentImg}">
-//         </aside>
-//         <aside class="right_side">
-//             <div>
-//                 <h2>${currentName}</h2>
-//                 <aricle class="description">${currentParagraph}</aricle>
-//             </div>
-
-//         </aside>
-//     `
-//     return personalPage;
-// }
-
 function RemoveLastDirectoryPartOf(){
     var url= window.location.href;
     var the_arr = url.split('/');
@@ -159,18 +143,12 @@ function drawPersonalPage(i,currentImg,currentName,currentParagraph,currentAge){
         </aside>
         <aside class="right_side">
             <div class="common-div">
-                <div  class="buttons">
-                    <a  class="btn btn-1" href="index.html">
-                        <svg>
-                            <rect x="0" y="0" fill="none" width="100%" height="100%"/>
-                        </svg>
-                        <span>&#10229;</span>
-                        5 ამბავი - 20 ივნისს დაშავებულები
-                    </a>
+                <div class="five_story_container grow">
+                    <a href="index.html"><img src="./assets/5story.png"></a>
                 </div>
                 <h2>${currentName} </h2>
                 <h2 class="age_conatiner">${currentAge} </h2>
-                ${currentName=="კობა ლეთოდიანი" ? " ": `<i class="fa fa-video-camera" id="myBtn" data-id="${i}" aria-hidden="true"></i>`}
+                ${currentName=="კობა ლეთოდიანი" ? " ": ` <img id="myBtn" data-id="${i}" src="./assets/naxe.png">`}
                 <div class="article_common_container">
 
                 <aricle class="description" >${currentParagraph}</aricle>
