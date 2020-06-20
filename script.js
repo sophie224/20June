@@ -260,25 +260,27 @@ function modalBoxFunc(iframeClass){
     let span = document.getElementsByClassName("close")[0];
     btn.onclick = function() {
         modal.style.display = "block";
-
         for(i = 0; i < imageArr.length; i++){
-
             if(currentDataId==imageArr[i].id){
                 $(iframeClass).attr("src",`${imageArr[i].videoSrc}`);
             }
-
         }
     }
     span.onclick = function() {
         modal.style.display = "none";
-
+        stopVideo();
     }
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            stopVideo();
         }
     }
 }
 
 
 
+function stopVideo() {
+    var currentIframe = document.querySelector('.modal-content > iframe');
+    currentIframe.src = currentIframe.src;
+  }

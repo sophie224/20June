@@ -82,6 +82,10 @@ header div img{
     font-weight: bold;
     font-size:1.5vw;
 }
+.moreInfo_intro article{
+  margin-top: 60px;     
+  font-size: 1vw;
+}
 .indrodution article{
     font-size: 1vw;
 }
@@ -181,7 +185,9 @@ header div img{
     margin: 0 auto;
     text-align: center;
 }
-
+.moreInfo_author{
+  margin-top: 200px;
+}
 
 .published_container:before{
     border-top: 2px solid #e77454;
@@ -392,6 +398,11 @@ header div img{
     color: white;
   }
 
+  @media only screen and (max-width: 1440px) {
+    .moreInfo_intro article {
+      font-size: 1.3vw;
+    }
+  }
   @media only screen and (max-width: 1200px) {
     .right_side {
       margin-right: 120px;
@@ -441,6 +452,15 @@ header div img{
   .person_age{
     font-size: 2vw;
   }
+  .moreInfo_intro{
+    top:10px;
+  }
+  .moreInfo_author{
+    margin-top: 140px;
+  }
+  .moreInfo_intro article {
+    font-size: 2vw;
+  }
 }
 
 @media only screen and (max-width: 830px) {
@@ -477,7 +497,15 @@ header div img{
   .indrodution article{
       font-size: 3vw;
   }
- 
+  .moreInfo_intro {
+    top:10px;
+  }
+  .moreInfo_intro article {
+    font-size: 3vw;
+  }
+  .author_container{
+    margin-top: 140px;
+  }
   .iframe{
     width: 400px;
     height: 225px;
@@ -490,6 +518,9 @@ header div img{
   }
   .author_container{
     width: 70%;
+  }
+  #moreInfo-btn{
+    font-size: 13px;
   }
 }
 @media only screen and (max-width: 420px) {
@@ -505,6 +536,12 @@ header div img{
   }
   #main-btn{
     font-size: 11px;
+  }
+  .moreInfo_intro article {
+    font-size: 4vw;
+  }
+  #moreInfo-btn {
+    font-size: 10px;
   }
 }
 /* @media only screen and (max-width: 350px) {
