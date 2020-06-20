@@ -200,7 +200,9 @@ header div img{
 }
 
   /*personal-page*/
-
+  .age_conatiner{
+    margin: -13px 0 30px 0 ;
+  }
   #personal_page{
     display: flex;
     justify-content: center;
@@ -226,7 +228,7 @@ header div img{
     line-height: 1.5;
   }
   .fa-video-camera:before{
-    color: #c54648;
+    color: #e54e25;
     cursor: pointer;
   }
  .common-div{
@@ -423,6 +425,7 @@ header div img{
   #personal_page{
     margin: 50px 0;
   }
+ 
   .left_side {
     width: 100%;
   }
@@ -486,11 +489,30 @@ header div img{
     width: 70%;
   }
 }
-@media only screen and (max-width: 450px) {
-    .btn{
-        font-size: 13px;
-    }
+@media only screen and (max-width: 420px) {
+  .btn{
+    font-size: 13px;
+  }
+  .iframe {
+    width: 300px;
+    height: 190px;
+  }
+  .modal-header{
+    width: 300px;
+  }
+  #main-btn{
+    font-size: 11px;
+  }
 }
+/* @media only screen and (max-width: 350px) {
+  .btn{
+      font-size: 13px;
+  }
+  .iframe {
+    width: 300px;
+    height: 190px;
+}
+} */
 .hide {
     display: none;
   }
