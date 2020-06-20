@@ -400,6 +400,9 @@ header div img{
   }
   
 @media only screen and (max-width: 992px) {
+  .main_page{
+    margin: 75px 0;
+  }
   header div {
       width: 6%;
   }
