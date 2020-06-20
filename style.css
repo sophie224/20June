@@ -210,7 +210,21 @@ header div img{
     text-align: center;
     margin-top: 80px;
 }
+.read-more-hide-container,.read-more-show-container{
+  width:100%;
 
+}
+  .read-more-show img,.read-more-hide img{
+    width: 100%;
+  }
+  .read-more-hide,.read-more-show{
+    display: block;
+    margin: auto;
+    width: 25%;
+  }
+  .read-more-hide{
+    width: 21% !important;
+  }
   /*personal-page*/
   .age_conatiner{
     margin: -13px 0 5px 0 ;
@@ -572,7 +586,8 @@ header div img{
 .hide {
     display: none;
   }
-.read-more-show,.read-more-hide{
+
+/* .read-more-show,.read-more-hide{
     border: 1px solid #e2e2e2;
     text-decoration: none;
     padding: 7px 10px;
@@ -583,9 +598,9 @@ header div img{
 .read-more-show:hover,.read-more-hide:hover{
     background-color: #f5f5f5;
     border: 1px solid #e54f26;
-}
+} */
 .article_common_container{
-    height: 450px;
+    height: 470px;
     overflow: auto;
 }
 
